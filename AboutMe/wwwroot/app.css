@@ -1,0 +1,198 @@
+@font-face {
+    font-family: "Odibee-Sans";
+    src: url(OdibeeSans-Regular.ttf)
+}
+
+.neomorphisem-bright {
+    border-radius: 10px;
+    background: #ffe66d;
+    box-shadow: 7px 7px 14px #e6cf62, -7px -7px 14px #fffd78;
+}
+
+.neomorphisem-dark {
+    border-radius: 10px;
+    background: #222222;
+    box-shadow: 15px 15px 28px #161616, -15px -15px 28px #2e2e2e;
+}
+
+* {
+    font-family: Odibee-Sans;
+    font-size: 24px;
+    color: #ffe66d;
+}
+
+.light-button {
+    background: #ffe66d;
+    border-radius: 10px;
+    color: #222222;
+    width: 200px;
+    height: 40px;
+    border: 1px solid #222222; /* Default border */
+    border-width: 1px 3px 3px 1px; /* Top Right Bottom Left */
+    transition: border-width 0.1s ease-in-out; /* Smooth transition */
+}
+
+    .light-button:hover {
+        border-width: 3px 1px 1px 3px; /* Changes border thickness smoothly */
+    }
+
+.dark-button {
+    background: #222222;
+    border-radius: 10px;
+    color: #ffe66d;
+    width: 200px;
+    height: 40px;
+    border: 1px solid #ffe66d; /* Default border */
+    border-width: 1px 3px 3px 1px; /* Top Right Bottom Left */
+    transition: border-width 0.1s ease-in-out; /* Smooth transition */
+}
+
+    .dark-button:hover {
+        border-width: 3px 1px 1px 3px; /* Changes border thickness smoothly */
+    }
+
+nav {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap; /* Allows wrapping when screen is smaller */
+    justify-content: center;
+    gap: 10px;
+}
+
+.div {
+    width: 225px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+}
+
+.page {
+    background: #222222;
+    height: 100vh;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    height: 90vh;
+    width: 100%;
+    max-height: 1080px;
+}
+
+.informations-plate {
+    background: #ffe66d;
+    height: 75vh;
+    width: 350px;
+    min-height: 750px;
+    border-radius: 10px;
+}
+
+.profile-plate {
+    height: 300px;
+    width: 300px;
+    border-radius: 175px;
+}
+
+.profile-picture {
+    width: 275px;
+    height: 275px;
+    object-fit: cover;
+    border-radius: 175px;
+    display: block;
+    margin-left: 12.5px;
+    margin-top: 12.5px;
+}
+
+h1 {
+    font-size: 42px;
+    margin-top: 50px;
+}
+
+.view-desktop {
+    visibility: visible;
+}
+
+.view-phone {
+    visibility: collapse;
+    height: 0px !important;
+    padding: 0px !important;
+}
+
+.menu-button {
+    width: 225px;
+    height: 40px;
+}
+
+@media (max-width: 991px) {
+    .informations-plate {
+        width: 300px;
+        height: 100%;
+    }
+
+    .profile-plate {
+        height: 250px;
+        width: 250px;
+    }
+
+    .profile-picture {
+        height: 225px;
+        width: 225px;
+    }
+
+    h1 {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 767px) {
+    .div {
+        width: 100px;
+        max-width: 100%;
+        line-height: 25px;
+    }
+
+    .view-desktop {
+        visibility: collapse;
+        height: 0px !important;
+        padding-bottom: 0px !important;
+    }
+
+    .view-phone {
+        visibility: visible;
+        height: 100%;
+    }
+
+    .menu-button {
+        width: 150px;
+        font-size: 16px;
+        width: 100px;
+        height: 30px;
+    }
+
+    .informations-plate {
+        width: 100%;
+        padding: 10px;
+        min-height: 0px;
+    }
+
+    .profile-plate {
+        height: 125px;
+        width: 125px;
+    }
+
+    .profile-picture {
+        height: 115px;
+        width: 115px;
+        margin-left: 5px;
+        margin-top: 5px;
+    }
+
+    * {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+}

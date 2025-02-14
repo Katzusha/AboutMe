@@ -1,0 +1,41 @@
+﻿@page "/projects"
+@rendermode InteractiveServer
+
+<PageTitle>Counter</PageTitle>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; padding-bottom: 25px; width: 90vw; max-width: 1400px;">
+    @for (int x = 0; x < 10; x++)
+    {
+        <div style="background: #ffe66d; border-radius: 10px; height: 400px; width: 300px;">
+            <table style="width: 100%; padding: 0px; height: 100%; text-align: center;">
+                <tr style="height: 190px;">
+                    <td style="padding: 0px;">
+                        <img src="Images/IMG_000040.jpg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px 10px 0px 0px;" />
+                    </td>
+                </tr>
+                <tr style="height: 5px;" />
+                <tr>
+                    <td style="padding: 0px 10px;">
+                        <div style="text-align: center; color: #222222; font-size: 32px;">
+                            PROJECT NAME
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 100%;">
+                    <td style="padding: 0px 10px;">
+                        <div style="text-align: start; color: #222222; line-height: 25px;">
+                            Description of a very important and compley program with C# solution
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px;">
+                    <td>
+                        <button class="light-button">
+                            GitHub
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    }
+</div>
