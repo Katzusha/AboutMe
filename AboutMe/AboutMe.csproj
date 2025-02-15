@@ -7,7 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\Database\database.db" />
+    <Content Remove="wwwroot\Database\database.sqbpro" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Database\database.db" />
+    <None Include="wwwroot\Database\database.sqbpro" />
     <None Include="wwwroot\OdibeeSans-Regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.119" />
   </ItemGroup>
 
   <ItemGroup>

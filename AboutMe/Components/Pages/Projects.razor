@@ -1,10 +1,11 @@
 ﻿@page "/projects"
+@using System.Data.SQLite
 @rendermode InteractiveServer
 
-<PageTitle>Counter</PageTitle>
+<PageTitle>Projects</PageTitle>
 
-<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; padding-bottom: 25px; width: 90vw; max-width: 1400px;">
-    @for (int x = 0; x < 10; x++)
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 25px)); gap: 25px; padding-bottom: 25px; width: 100%; max-width: min(90vw, 1400px);">
+    @for (int x = 0; x < GetProjects(); x++)
     {
         <div style="background: #ffe66d; border-radius: 10px; height: 400px; width: 300px;">
             <table style="width: 100%; padding: 0px; height: 100%; text-align: center;">
@@ -39,3 +40,26 @@
         </div>
     }
 </div>
+
+@code
+{
+    public static int GetProjects()
+    {
+        int x = 0;
+        using (var connection = new SQLiteConnection("Data source=Database\\database.db"))
+        {
+            connection.Open();
+            var cmd = connection.CreateCommand();
+            cmd.CommandText = @"select * from Projects";
+            using (var reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    x++;
+                }
+            }
+        }
+
+        return x;
+    }
+}
