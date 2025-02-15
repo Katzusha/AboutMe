@@ -1,31 +1,31 @@
 ﻿@page "/projects"
-@using System.Data.SQLite
+@using Microsoft.Data.Sqlite
 @rendermode InteractiveServer
 
 <PageTitle>Projects</PageTitle>
 
 <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 25px)); gap: 25px; padding-bottom: 25px; width: 100%; max-width: min(90vw, 1400px);">
-    @for (int x = 0; x < GetProjects(); x++)
+    @foreach (Models.Project project in GetProjects())
     {
         <div style="background: #ffe66d; border-radius: 10px; height: 400px; width: 300px;">
             <table style="width: 100%; padding: 0px; height: 100%; text-align: center;">
                 <tr style="height: 190px;">
                     <td style="padding: 0px;">
-                        <img src="Images/IMG_000040.jpg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px 10px 0px 0px;" />
+                        <img src="Images/@project.Img" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px 10px 0px 0px;" />
                     </td>
                 </tr>
                 <tr style="height: 5px;" />
                 <tr>
                     <td style="padding: 0px 10px;">
                         <div style="text-align: center; color: #222222; font-size: 32px;">
-                            PROJECT NAME
+                            @project.Title.ToUpper()
                         </div>
                     </td>
                 </tr>
                 <tr style="height: 100%;">
                     <td style="padding: 0px 10px;">
                         <div style="text-align: start; color: #222222; line-height: 25px;">
-                            Description of a very important and compley program with C# solution
+                            @project.Description
                         </div>
                     </td>
                 </tr>
@@ -43,10 +43,11 @@
 
 @code
 {
-    public static int GetProjects()
+    public static List<Models.Project> GetProjects()
     {
+        List<Models.Project> projects = new List<Models.Project>();
         int x = 0;
-        using (var connection = new SQLiteConnection("Data source=Database\\database.db"))
+        using (var connection = new SqliteConnection("Data source=database.db"))
         {
             connection.Open();
             var cmd = connection.CreateCommand();
@@ -55,11 +56,11 @@
             {
                 while (reader.Read())
                 {
-                    x++;
+                    projects.Add(new Models.Project(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4)));
                 }
             }
         }
 
-        return x;
+        return projects;
     }
 }
