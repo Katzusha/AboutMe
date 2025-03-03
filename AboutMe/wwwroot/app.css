@@ -51,6 +51,23 @@
         border-width: 3px 1px 1px 3px; /* Changes border thickness smoothly */
     }
 
+.light-input {
+    background: #ffe66d;
+    border-radius: 10px;
+    color: #222222;
+    width: 100%;
+    height: 40px;
+    border: 1px solid #222222;
+    border-width: 1px 3px 3px 1px; /* Top Right Bottom Left */
+    transition: border-width 0.1s ease-in-out; /* Smooth transition */
+    outline: none;
+    padding: 0px 5px;
+}
+
+    .light-input:focus {
+        border-width: 3px 1px 1px 3px; /* Changes border thickness smoothly */
+    }
+
 .dark-input {
     background: #222222;
     border-radius: 10px;

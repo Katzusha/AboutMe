@@ -142,11 +142,11 @@
 @if (_dialog)
 {
     <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; backdrop-filter: blur(10px) brightness(50%); z-index: 1;"></div>
-    <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80vw; max-width: 400px; background: #222222; color: white; display: flex; justify-content: center; align-items: center; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); z-index: 9999;">
+    <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80vw; max-width: 400px; background: #ffe66d; color: white; display: flex; justify-content: center; align-items: center; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); z-index: 9999;">
         <table style="margin: 10px; width: 100%; height: 100%">
             <tr style="text-align: end;">
                 <td colspan="100">
-                    <button class="dark-button" style="width: 40px;" @onclick="HideDialog">X</button>
+                    <button class="light-button" style="width: 40px;" @onclick="HideDialog">X</button>
                 </td>
             </tr>
             <tr>
@@ -156,23 +156,23 @@
             </tr>
             <tr>
                 <td>
-                    <input class="dark-input" placeholder="First name" />
+                    <input class="light-input" placeholder="First name" />
                 </td>
                 <td style="width: 10px;"/>
                 <td>
-                    <input class="dark-input" placeholder="Surname"/>
+                    <input class="light-input" placeholder="Surname" />
                 </td>
             </tr>
             <tr style="height: 10px;"/>
             <tr>
                 <td colspan="100">
-                    <input class="dark-input" placeholder="eMail"/>
+                    <input class="light-input" placeholder="eMail" />
                 </td>
             </tr>
             <tr style="height: 10px;" />
             <tr>
                 <td colspan="100">
-                    <textarea class="dark-input" placeholder="Message" style="height: 200px; scrollbar-width: none;"/>
+                    <textarea class="light-input" placeholder="Message" style="height: 200px; scrollbar-width: none;" />
                 </td>
             </tr>
             <tr>
@@ -182,7 +182,7 @@
             </tr>
             <tr style="text-align: end;">
                 <td colspan="100">
-                    <button class="dark-button">SEND</button>
+                    <button class="light-button">SEND</button>
                 </td>
             </tr>
         </table>
