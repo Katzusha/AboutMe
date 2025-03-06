@@ -1,4 +1,6 @@
 ﻿@page "/personal"
+@using System.Net.Mail
+@using System.Net
 @rendermode InteractiveServer
 
 <PageTitle>Home</PageTitle>
@@ -47,6 +49,25 @@
                         <tr style="height: 15px;" />
                         <tr>
                             <td>
+                                <table style="margin: auto;">
+                                    <tr>
+                                        <td>
+                                            <a href="https://www.instagram.com/andraz.kosak/">
+                                                <img src="https://img.icons8.com/?size=100&id=RhYNENh5cxlS&format=png&color=222222" style="width: 45px; height: 45px;" />
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="https://github.com/Katzusha">
+                                                <img src="https://img.icons8.com/?size=100&id=3tC9EQumUAuq&format=png&color=222222" style="width: 45px; height: 45px;" />
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr style="height: 15px;" />
+                        <tr>
+                            <td>
                                 <button class="light-button" @onclick="ShowDialog">
                                     Contact me
                                 </button>
@@ -57,7 +78,7 @@
             </td>
             <td style="padding-left: 25px; padding-right: 25px; height: 85vh; vertical-align: top;">
                 <div class="neomorphisem-dark" style="font-size: 32px; padding: 5px 10px; width: 100%; text-align: center;">
-                    I create modern and user-friendly desktop and web applications. I specialize in C# .NET, WPF .NET and Blazor .NET.
+                    I create minimalistic, modern and user-friendly desktop and web applications. I specialize in C# .NET, WPF .NET and Blazor .NET. In my free time I also 3D print.
                 </div>
                 <h1>
                     About me:
@@ -156,23 +177,28 @@
             </tr>
             <tr>
                 <td>
-                    <input class="light-input" placeholder="First name" />
+                    <input class="light-input" placeholder="First name" @bind="Firstname"/>
                 </td>
                 <td style="width: 10px;"/>
                 <td>
-                    <input class="light-input" placeholder="Surname" />
+                    <input class="light-input" placeholder="Surname" @bind="Surname"/>
                 </td>
             </tr>
             <tr style="height: 10px;"/>
             <tr>
                 <td colspan="100">
-                    <input class="light-input" placeholder="eMail" />
+                    <input class="light-input" placeholder="eMail" @bind="Mail"/>
                 </td>
             </tr>
             <tr style="height: 10px;" />
             <tr>
                 <td colspan="100">
-                    <textarea class="light-input" placeholder="Message" style="height: 200px; scrollbar-width: none;" />
+                    <textarea class="light-input" placeholder="Message" style="height: 200px; scrollbar-width: none;" @bind="Message" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="100">
+                    <div style="color: red; text-align: center;">@ErrorMsg</div>
                 </td>
             </tr>
             <tr>
@@ -182,7 +208,7 @@
             </tr>
             <tr style="text-align: end;">
                 <td colspan="100">
-                    <button class="light-button">SEND</button>
+                    <button class="light-button" @onclick="SendMail">SEND</button>
                 </td>
             </tr>
         </table>
@@ -191,16 +217,41 @@
 
 @code{
     private bool _dialog;
-    // public bool Dialog
-    // {
-    //     get => _dialog;
-    //     set
-    //     {
-    //         _dialog = value;
-    //         StateHasChanged();
-    //     }
-    // }
+    private string Firstname { get; set; }
+    private string Surname { get; set; }
+    private string Mail { get; set; }
+    private string Message { get; set; }
+    private string ErrorMsg { get; set; }
 
+    private void SendMail()
+    {
+        try{
+            using (SmtpClient client = new SmtpClient("smtp.gmail.com", 587))
+            {
+                client.EnableSsl = true;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                client.Credentials = new NetworkCredential("kosak.andraz@gmail.com", "rets idob rwns ngcn");
+                MailMessage msg = new MailMessage();
+                msg.To.Add("kosak.andraz@gmail.com");
+                msg.From = new MailAddress("kosak.andraz@gmail.com");
+                msg.Subject = "AboutMe - contact";
+                msg.Body = $"A new message came from {Mail} ({Firstname} {Surname}):\n{Message}";
+                client.Send(msg);
+                _dialog = false;
+                Firstname = null;
+                Surname = null;
+                Mail = null;
+                Message = null;
+            }
+        }
+        catch (Exception ex)
+        {
+            ErrorMsg = "Something went wrong. Please try again later.";
+        }
+    }
+
+    // rets idob rwns ngcn
     private void ShowDialog() => _dialog = true;
     private void HideDialog() => _dialog = false;
 }
