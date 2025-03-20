@@ -1,56 +1,47 @@
 ﻿@page "/projects"
-@using Microsoft.Data.Sqlite
 @rendermode InteractiveServer
 
 <PageTitle>Projects</PageTitle>
 
 <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 25px)); gap: 25px; padding-bottom: 25px; width: 100%; max-width: min(90vw, 1400px);">
-    @foreach (Models.Project project in GetProjects())
+    @foreach (Models.Project project in Models.Project.GetAll())
     {
-        <div style="background: #ffe66d; border-radius: 10px; height: 400px; width: 300px;">
-            <table style="width: 100%; height: 100%; text-align: center;">
-                <tr style="height: 190px;">
-                    <td style="padding: 0px;">
-                        <img src="Images/@project.Img" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px 10px 0 0; max-height: 190px;" alt="@project.ImgDesc" />
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding: 0px 10px;">
-                        <div style="text-align: center; color: #222222; font-size: 32px;">
-                            @project.Title
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding: 0px 10px;">
-                        <div style="text-align: start; color: #222222; line-height: 25px; font-size: 24px;">
-                            @project.Description
-                        </div>
-                    </td>
-                </tr>
-                <tr style="height: 50px;">
-                    <td>
-                        <button class="light-button" style="font-size: 24px;" onclick="window.open('@project.Url', '_blank');">
-                            GitHub
-                        </button>
-                    </td>
-                </tr>
-            </table>
-        </div>
+        @if (project.Id != -1)
+        {
+            <div style="background: #ffe66d; border-radius: 10px; height: 400px; width: 300px;">
+                <table style="width: 100%; height: 100%; text-align: center;">
+                    <tr style="height: 190px;">
+                        <td style="padding: 0px;">
+                            <img src="Images/@project.Img" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px 10px 0 0; max-height: 190px;" alt="@project.ImgDesc" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0px 10px;">
+                            <div style="text-align: center; color: #222222; font-size: 32px;">
+                                @project.Title
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0px 10px;">
+                            <div style="text-align: start; color: #222222; line-height: 25px; font-size: 24px;">
+                                @project.Description
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="height: 50px;">
+                        <td>
+                            <button class="light-button" style="font-size: 24px;" onclick="window.open('@project.Url', '_blank');">
+                                GitHub
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        }
+        else{
+            <div>Error</div>
+            <div>@project.Description</div>
+        }
     }
 </div>
-
-@code
-{
-    public static List<Models.Project> GetProjects()
-    {
-        return new List<Models.Project>
-        {
-            new Models.Project(1, "AboutMe", "A personal portfolio built with Blazor .NET, showcasing my skills and experiences in a user-friendly manner.", "IMG_000001.jpg", "AboutMe screenshot", "https://github.com/Katzusha/AboutMe"),
-            new Models.Project(2, "NeoResort-v2", "A C# WPF app for hotel receptions, featuring eye-friendly colors and an enhanced user experience.", "IMG_000003.jpg", "NeoResort screenshot", "https://github.com/Katzusha/NeoResort-v2"),
-            new Models.Project(3, "ScvApp", "A Blazor .NET app for primary schools to book appointments for an informatics day, streamlining the scheduling process.", "IMG_000002.jpg", "ScvApp screenshot", "https://github.com/Katzusha/ScvApp"),
-            new Models.Project(4, "Garnita", "A C# WPF app for managing company garages and car reservations, optimizing fleet management and employee booking.", "IMG_000006.jpg", "Garnita screenshot", "https://github.com/Katzusha/Garnita"),
-            new Models.Project(5, "ASCII-Camera", "A Python app that converts camera feed to ASCII art, combining creativity and programming skills in a fun way.", "IMG_000005.jpg", "ASCII-Camera screenshot", "https://github.com/Katzusha/ASCII-Camera")
-        };
-    }
-}

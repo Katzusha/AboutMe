@@ -1,10 +1,9 @@
 ﻿@page "/prints"
-@using Microsoft.Data.Sqlite
 @rendermode InteractiveServer
 
-<PageTitle>Projects</PageTitle>
+<PageTitle>Prints</PageTitle>
 
-<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 25px)); gap: 25px; padding-bottom: 25px; width: 100%; max-width: min(90vw, 1400px);">
+@* <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 25px)); gap: 25px; padding-bottom: 25px; width: 100%; max-width: min(90vw, 1400px);">
     @foreach (Models.Project project in GetProjects())
     {
         <div style="background: #ffe66d; border-radius: 10px; height: 400px; width: 300px;">
@@ -38,20 +37,8 @@
             </table>
         </div>
     }
-</div>
+</div> *@
 
 @code
 {
-    public static List<Models.Project> GetProjects()
-    {
-        return new List<Models.Project>
-        {
-            new Models.Project(1, "AboutMe", "A personal portfolio built with Blazor .NET, showcasing my skills and experiences in a user-friendly manner.", "IMG_000001.jpg", "AboutMe screenshot", "https://github.com/Katzusha/AboutMe"),
-            new Models.Project(2, "NeoResort-v0", "A C# WPF app for hotel receptions, featuring eye-friendly colors and an enhanced user experience.", "IMG_000003.jpg", "NeoResort screenshot", "https://github.com/Katzusha/NeoResort-v0"),
-            new Models.Project(3, "ScvApp", "A Blazor .NET app for primary schools to book appointments for an informatics day, streamlining the scheduling process.", "IMG_000002.jpg", "ScvApp screenshot", "https://github.com/Katzusha/ScvApp"),
-            new Models.Project(4, "Garnita", "A C# WPF app for managing company garages and car reservations, optimizing fleet management and employee booking.", "IMG_000006.jpg", "Garnita screenshot", "https://github.com/Katzusha/Garnita"),
-            new Models.Project(5, "ASCII-Camera", "A Python app that converts camera feed to ASCII art, combining creativity and programming skills in a fun way.", "IMG_000005.jpg", "ASCII-Camera screenshot", "https://github.com/Katzusha/ASCII-Camera"),
-            new Models.Project(6, "UI-Buddy", "A C# WPF app with poor design, created to improve my UI/UX skills during my early programming days and serve as a learning tool.", "IMG_000004.jpg", "UI-Buddy screenshot", "https://github.com/Katzusha/UI-Buddy"),
-        };
-    }
 }
