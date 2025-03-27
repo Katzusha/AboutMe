@@ -1,4 +1,4 @@
-﻿@page "/personal"
+﻿@page "/"
 @using System.Net.Mail
 @using System.Net
 @rendermode InteractiveServer
@@ -117,7 +117,7 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr style="height: 10px;"/>
+                        <tr style="height: 10px;" />
                         <tr>
                             <td colspan="2">
                                 <table style="margin-right: 15px;">
@@ -140,7 +140,7 @@
                 </div>
             </td>
         </tr>
-        <tr style="height: 25px;"/>
+        <tr style="height: 25px;" />
         <tr>
             <td>
                 <div class="neomorphisem-dark" style="font-size: 18px; padding: 5px 10px; width: 100%; text-align: center;">
@@ -172,22 +172,22 @@
             </tr>
             <tr>
                 <td colspan="100">
-                    <hr/>
+                    <hr />
                 </td>
             </tr>
             <tr>
                 <td>
-                    <input class="light-input" placeholder="First name" @bind="Firstname"/>
+                    <input class="light-input" placeholder="First name" @bind="Firstname" />
                 </td>
-                <td style="width: 10px;"/>
+                <td style="width: 10px;" />
                 <td>
-                    <input class="light-input" placeholder="Surname" @bind="Surname"/>
+                    <input class="light-input" placeholder="Surname" @bind="Surname" />
                 </td>
             </tr>
-            <tr style="height: 10px;"/>
+            <tr style="height: 10px;" />
             <tr>
                 <td colspan="100">
-                    <input class="light-input" placeholder="eMail" @bind="Mail"/>
+                    <input class="light-input" placeholder="eMail" @bind="Mail" />
                 </td>
             </tr>
             <tr style="height: 10px;" />
@@ -215,7 +215,7 @@
     </div>
 }
 
-@code{
+@code {
     private bool _dialog;
     private string Firstname { get; set; }
     private string Surname { get; set; }
@@ -225,7 +225,8 @@
 
     private void SendMail()
     {
-        try{
+        try
+        {
             using (SmtpClient client = new SmtpClient("smtp.gmail.com", 587))
             {
                 client.EnableSsl = true;

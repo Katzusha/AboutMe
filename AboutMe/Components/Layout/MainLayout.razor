@@ -1,9 +1,16 @@
 ﻿@inherits LayoutComponentBase
+@inject NavigationManager NavManager
 
 <div class="page">
-    <div>
-        <NavMenu />
-    </div>
+   @if (NavManager.Uri.Contains("/Projects", StringComparison.OrdinalIgnoreCase) ||
+        NavManager.Uri.Contains("/", StringComparison.OrdinalIgnoreCase) ||
+        NavManager.Uri.Contains("/Error", StringComparison.OrdinalIgnoreCase) ||
+        NavManager.Uri.Contains("/Prints", StringComparison.OrdinalIgnoreCase))
+   {
+        <div>
+            <NavMenu />
+        </div>
+   }
 
     <main>
         <article>
